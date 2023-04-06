@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GestionScene : MonoBehaviour
 {
     [SerializeField] private GameObject _menuInstructions = default;
-    public void DemarrerJeu()
+    public void ChangerSceneSuivante()
     {
         int noScene = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(noScene + 1);

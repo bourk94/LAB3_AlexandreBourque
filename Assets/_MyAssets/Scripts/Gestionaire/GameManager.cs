@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     // Attributs
 
-    private int _pointage = 0;  // Attribut qui conserve le nombre d'accrochages
-    private int _accrochage = 0;  // Atribut qui conserve le nombre d'accrochage
-    private float _temps = 0.0f;  // Attribut qui conserve le temps
+    private int _pointage = 0;
+    private float _tempsDepart = 0;
+    private float _tempsFinal = 0;
+    private float _temps = 0;
 
     // Méthodes privées
     private void Awake()
@@ -29,25 +31,23 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        InstructionsDepart();  // Affiche les instructions de départ
+        _tempsDepart = Time.time;
     }
 
-    
-     // Méthode qui affiche les instructions au départ
-    private static void InstructionsDepart()
+    private void Update()
     {
-        Debug.Log("Course à obstacles");
-        Debug.Log("Le but du jeu est d'atteindre la zone d'arrivée le plus rapidement possible dans les 3 niveaux");
-        Debug.Log("Chaque contact avec un obstable entraînera une pénalité de temps de 1 seconde");
+        if (SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
-    // Méthodes publiques
-
-    
     // Méthode publique qui permet d'augmenter le pointage de 1
     public void AugmenterPointage()
     {
         _pointage++;
+        UIManager uiManager = FindObjectOfType<UIManager>();
+        uiManager.ChangerPointage(_pointage);
     }
 
     public int GetPointage()
@@ -55,51 +55,28 @@ public class GameManager : MonoBehaviour
         return _pointage;
     }
 
-    public float GetTempsNiv1()
+    public float GetTempsDepart()
     {
-        return _temps;
+        return _tempsDepart;
     }
 
-    public int GetAccrochagesNiv1()
+    public void SetTemps(float __temps)
     {
-        return _accrochage;
+        _temps = __temps;
     }
 
-    public void SetNiveau1(int accrochages, float temps)
-    {
-        _accrochage = accrochages;
-        _temps = temps;
+    public float GetTemps() 
+    { 
+        return _temps; 
     }
 
-    public float GetTempsNiv2()
+    public void SetTempsFinal(float __tempFinal)
     {
-        return _temps;
+        _tempsFinal = __tempFinal - _tempsDepart;
     }
 
-    public int GetAccrochagesNiv2()
+    public float GetTempsFinal()
     {
-        return _accrochage;
-    }
-
-    public void SetNiveau2(int accrochages, float temps)
-    {
-        _accrochage = accrochages;
-        _temps = temps;
-    }
-
-    public float GetTempsNiv3()
-    {
-        return _temps;
-    }
-
-    public int GetAccrochagesNiv3()
-    {
-        return _accrochage;
-    }
-
-    public void SetNiveau3(int accrochages, float temps)
-    {
-        _accrochage = accrochages;
-        _temps = temps;
+        return _tempsFinal;
     }
 }
