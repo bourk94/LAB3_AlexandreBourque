@@ -13,8 +13,8 @@ public class UIManager : MonoBehaviour
     private bool _enPause;
     private GameManager _gameManager;
     private Vector3 _positionDepart = Vector3.zero;
-    private float _temps;
-    private float _tempsAjuste;
+    private float _temps = 0;
+    public float _tempsAjuste = 0;
 
     void Start()
     {
@@ -44,7 +44,6 @@ public class UIManager : MonoBehaviour
         if (_rb.position != _positionDepart)
         {
             _tempsAjuste = Time.time - (_gameManager.GetTempsDepart() + _temps);
-            _txtTemps.text = "Temps\n" + _tempsAjuste.ToString("f2");
             _gameManager.SetTemps(_tempsAjuste);
         }
     }

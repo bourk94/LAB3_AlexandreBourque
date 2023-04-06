@@ -862,7 +862,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Accrochages
 
-    000'
+    0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1959ca39dcfb5d14cac5688e44751127, type: 2}
   m_sharedMaterial: {fileID: 7454143903067798701, guid: 1959ca39dcfb5d14cac5688e44751127, type: 2}
@@ -1200,6 +1200,7 @@ MonoBehaviour:
   _txtAccrochages: {fileID: 2583343420714130786}
   _txtTemps: {fileID: 2583343420276489961}
   _menuPause: {fileID: 2583343421030076002}
+  _tempsAjuste: 0
 --- !u!1 &2583343420964688691
 GameObject:
   m_ObjectHideFlags: 0

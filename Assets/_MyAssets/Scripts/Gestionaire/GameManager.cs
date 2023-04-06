@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 0)
+        if (SceneManager.GetActiveScene().buildIndex == 4 || SceneManager.GetActiveScene().buildIndex == 0)
         {
             Destroy(gameObject);
         }
@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
 
     public void SetTempsFinal(float __tempFinal)
     {
-        _tempsFinal = __tempFinal - _tempsDepart;
+        _tempsFinal = __tempFinal;
     }
 
     public float GetTempsFinal()

@@ -9,6 +9,7 @@ public class GestionFin : MonoBehaviour
 {
     // Attributs
     private GameManager _gameManager;
+    private UIManager _uiManager;
     private bool _toucher;
     private Player _player;
 
@@ -31,7 +32,7 @@ public class GestionFin : MonoBehaviour
         
         if (indexScene == (SceneManager.sceneCountInBuildSettings - 2))
         {
-            _gameManager.SetTempsFinal(Time.time);
+            _gameManager.SetTempsFinal(_gameManager.GetTemps());
             SceneManager.LoadScene(indexScene + 1);
         }
         else
